@@ -27,63 +27,53 @@ const shopProducts = [
 
 class ShopProducts {
   constructor(config) {
-    this.shopProducts = config.shopProducts;
   }
 
 
-  create() {
-   const newProduct = {
-    id: ,
-    name: ,
-    price: ,
-    image: ,
-   }
-   this.shopProducts.push(newProduct);
-  }
-
-
-  delete() {
-
-
-  }
-  
-  update() {
-
-  }
-
-  read() {
-
-  }
-
-
-
-  addProductToBusket() {
-
-  }
 
 }
-
-new ShopProducts({
-  images,
-});
 
 const ShopProductsInstance = new ShopProducts('root');
 
 window.ShopProductsInstance = ShopProductsInstance;
 
 
+
 class ShopBasket {
-  constructor() {
-    shopBasket = [
-      {
+  constructor(config) {
+    this.shopProducts = config.shopProducts;
+    this.shopBasket = [
+        {
 
-      },
-      {
+        },
+        {
 
-      },
-    ]
+        },
+      ]
 
+      console.log('HERE', this.shopProducts);
   }
 
+    create(id, name, price, images) {
+   const newProduct = {
+    id: id,
+    name: name,
+    price: price,
+    image: images,
+   }
+
+  //  let newArr = this.shopProducts.push(newProduct);
+  //  return newArr;
+  return newProduct;
+  }
   
 }
+
+new ShopBasket({
+  shopProducts,
+});
+
+
+const ShopBasketInstance = new ShopBasket('root');
+
+window.ShopBasketInstance = ShopBasketInstance;
