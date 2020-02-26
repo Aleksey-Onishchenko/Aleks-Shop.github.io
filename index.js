@@ -25,19 +25,6 @@ const shopProducts = [
   }
 ]
 
-class ShopProducts {
-  constructor(config) {
-  }
-
-
-
-}
-
-const ShopProductsInstance = new ShopProducts('root');
-
-window.ShopProductsInstance = ShopProductsInstance;
-
-
 
 class ShopBasket {
   constructor(config) {
@@ -69,11 +56,9 @@ class ShopBasket {
   
 }
 
-new ShopBasket({
+const ShopBasketInstance = new ShopBasket({
   shopProducts,
 });
 
-
-const ShopBasketInstance = new ShopBasket('root');
 
 window.ShopBasketInstance = ShopBasketInstance;
