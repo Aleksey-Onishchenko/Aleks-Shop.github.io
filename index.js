@@ -29,29 +29,27 @@ const shopProducts = [
 class ShopBasket {
   constructor(config) {
     this.shopProducts = config.shopProducts;
-    this.shopBasket = [
-        {
+    this.shopBasket = [];
 
-        },
-        {
-
-        },
-      ]
-
-      console.log('HERE', this.shopProducts);
+      console.log('HERE', this.shopProducts[0].name);
+      console.log('shopBusket', this.shopBasket);
   }
 
-    create(id, name, price, images) {
-   const newProduct = {
-    id: id,
-    name: name,
-    price: price,
-    image: images,
-   }
+  create(id) {
+    const newProduct = {
+      id: id,
+      quality: 1,
+      // total: this.shopProducts.find(item => item.id === id).price,
+      total: this.shopProducts.find(function(element) {
+        if (element.id === id) {
+          return element.price;
+        } if (element.id === -1) {
+          throw 'Id is undefined!';
+        }
+      })
+    }
 
-  //  let newArr = this.shopProducts.push(newProduct);
-  //  return newArr;
-  return newProduct;
+    return newProduct;
   }
   
 }
