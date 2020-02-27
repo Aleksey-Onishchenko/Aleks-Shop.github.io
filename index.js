@@ -31,27 +31,35 @@ class ShopBasket {
     this.shopProducts = config.shopProducts;
     this.shopBasket = [];
 
-      console.log('HERE', this.shopProducts[0].name);
-      console.log('shopBusket', this.shopBasket);
   }
 
   create(id) {
-    const newProduct = {
-      id: id,
-      quality: 1,
-      // total: this.shopProducts.find(item => item.id === id).price,
-      total: this.shopProducts.find(function(element) {
+    let truID = this.shopProducts.find(elem => elem.id === id); // все елементы 
+    
+      if (truID === id) {
+        const newProduct = {
+          id: id,
+          quality: 1,
+          total: element.price,
+        }
+        this.shopBasket.push(newProduct);
+        return newProduct;
+        // newProduct.total = element.price;
+      } else if (element.id === undefined) {
+        throw new Error('We don\'t have this ID')
+      }
+
+      this.shopBasket.find(function(element) {
         if (element.id === id) {
-          return element.price;
-        } if (element.id === -1) {
-          throw 'Id is undefined!';
+          newProduct.quality += 1;
         }
       })
+      this.shopBasket.push(newProduct);
+      return newProduct;
+    
     }
 
-    return newProduct;
-  }
-  
+    
 }
 
 const ShopBasketInstance = new ShopBasket({
