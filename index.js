@@ -30,41 +30,32 @@ class ShopBasket {
   constructor(config) {
     this.shopProducts = config.shopProducts;
     this.shopBasket = [];
-
   }
 
   create(id) {
-
-    this.shopProducts.find(function (element) {
+    const element = this.shopProducts.find(elem => elem.id === id);
     
-      if (element.id === id) {
-        const newProduct = {
-          id: id,
-          quality: 1,
-          total: element.price,
-        }
-        this.shopBasket.push(newProduct);
-        return newProduct;
-        // newProduct.total = element.price;
-      } else if (element.id === undefined) {
-        throw new Error('We don\'t have this ID')
-      }
-    })
+    if ( element !== undefined) {
+      const newProduct = {
+        id: id,
+        quality: 1,
+        total: element.price,
+      };
 
-    this.shopBasket.find(function(element) {
-      if (element.id === id) {
+      this.shopBasket.push(newProduct);
+      const itemInBasket = this.shopBasket.find(item => item.id === id);
+      
+      if (this.shopBasket.hasOwnProperty(itemInBasket)) {
         newProduct.quality += 1;
       }
-    })
-    // this.shopBasket.push(newProduct);
-    // return newProduct;
+      }
+    }
   }
   
-}
+
 
 const ShopBasketInstance = new ShopBasket({
   shopProducts,
 });
-
 
 window.ShopBasketInstance = ShopBasketInstance;
