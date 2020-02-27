@@ -34,9 +34,10 @@ class ShopBasket {
   }
 
   create(id) {
-    let truID = this.shopProducts.find(elem => elem.id === id); // все елементы 
+
+    this.shopProducts.find(function (element) {
     
-      if (truID === id) {
+      if (element.id === id) {
         const newProduct = {
           id: id,
           quality: 1,
@@ -48,18 +49,17 @@ class ShopBasket {
       } else if (element.id === undefined) {
         throw new Error('We don\'t have this ID')
       }
+    })
 
-      this.shopBasket.find(function(element) {
-        if (element.id === id) {
-          newProduct.quality += 1;
-        }
-      })
-      this.shopBasket.push(newProduct);
-      return newProduct;
-    
-    }
-
-    
+    this.shopBasket.find(function(element) {
+      if (element.id === id) {
+        newProduct.quality += 1;
+      }
+    })
+    // this.shopBasket.push(newProduct);
+    // return newProduct;
+  }
+  
 }
 
 const ShopBasketInstance = new ShopBasket({
