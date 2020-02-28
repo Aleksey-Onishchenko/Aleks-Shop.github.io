@@ -39,20 +39,32 @@ class ShopBasket {
   
     if (itemInBasket) {
       const oneQuality = itemInBasket.quality;
+      let newItemBasket = itemInBasket;
       const recalculationValue = this.shopBasket.map(function() {
-        itemInBasket.quality = oneQuality + 1;
-        itemInBasket.total = element.price * itemInBasket.quality;
+        newItemBasket.quality = oneQuality + 1;
+        newItemBasket.total = element.price * newItemBasket.quality;
       })
-    } else if (element) {
+      return;
+    } 
+    if (element) {
       const newProduct = {
         id: id,
         quality: 1,
         total: element.price,
       };
       this.shopBasket.push(newProduct);
-    } else {
-      throw new Error('Wrond "ID"');
-    }
+      return;
+    } 
+      throw new Error('Wrond "ID');
+  }
+
+  delete(id) {
+    let uninstallItems = this.shopBasket.filter(element => element.id !== id);
+    console.log(uninstallItems);
+  }
+
+  update() {
+
   }
 }
 
