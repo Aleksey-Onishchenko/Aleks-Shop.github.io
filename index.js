@@ -33,51 +33,19 @@ class ShopBasket {
   }
 
   create(id) {
-    // const element = this.shopProducts.find(elem => elem.id === id);
-    // const itemInBasket = this.shopBasket.find(item => item.id === id);
-    
-    // for (let i = 0; i < this.shopBasket.length; i += 1) {
-
-    //   if (itemInBasket === this.shopBasket[i]) {
-    //     let startQuality = itemInBasket.total;
-    //     console.log('we have 1 like this');
-    //     itemInBasket.quality += 1;
-    //     itemInBasket.total = (startQuality * itemInBasket.quality);
-    //   } 
-    //   return;
-    // } 
-    // if (element !== undefined) {
-    //   const newProduct = {
-    //     id: id,
-    //     quality: 1,
-    //     total: element.price,
-    //   };
-    //   this.shopBasket.push(newProduct);
-    //   } else {
-    //     throw new Error('WRONG ID');
-    //   }
-
-
+  
     let element = this.shopProducts.find(elem => elem.id === id);
     let itemInBasket = this.shopBasket.find(item => item.id === id);
   
     if (itemInBasket) {
-      console.log('нынишний элемент', itemInBasket);
-      let mainPrice = itemInBasket.total;
-      console.log('переменная mainPrice: ', mainPrice);
-      console.log('we already have this ID')
-      console.log('itemInBasket TOTAL', itemInBasket.total);
-      itemInBasket = {
-        ...itemInBasket,
-        id,
-        quality: itemInBasket.quality + 1,
-        total: mainPrice * itemInBasket.quality,
-      }
-      console.log('ARRAY', this.shopBasket)
-      console.log('next itemInBasket', itemInBasket);
+      let oneQuality = itemInBasket.quality;
+      this.shopBasket.map(function() {
+        itemInBasket.quality = oneQuality + 1;
+        itemInBasket.total = element.price * itemInBasket.quality;
+      })
       return;
     }
-    if (element !== undefined) {
+    if (element) {
       const newProduct = {
         id: id,
         quality: 1,
