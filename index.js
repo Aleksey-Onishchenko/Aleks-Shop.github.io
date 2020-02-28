@@ -34,18 +34,20 @@ class ShopBasket {
 
   create(id) {
   
-    const element = this.shopProducts.find(elem => elem.id === id);
     const itemInBasket = this.shopBasket.find(item => item.id === id);
   
     if (itemInBasket) {
       const oneQuality = itemInBasket.quality;
-      let newItemBasket = itemInBasket;
-      const recalculationValue = this.shopBasket.map(function() {
-        newItemBasket.quality = oneQuality + 1;
-        newItemBasket.total = element.price * newItemBasket.quality;
+      this.shopBasket = this.shopBasket.map(function() {
+        itemInBasket.quality = itemInBasket.quality + 1;
+        itemInBasket.total = (itemInBasket.total / oneQuality) * itemInBasket.quality;
+        return itemInBasket;
       })
       return;
     } 
+    
+    const element = this.shopProducts.find(elem => elem.id === id);
+
     if (element) {
       const newProduct = {
         id: id,
@@ -55,7 +57,7 @@ class ShopBasket {
       this.shopBasket.push(newProduct);
       return;
     } 
-      throw new Error('Wrond "ID');
+      throw new Error('Wrong "ID');
   }
 }
 
