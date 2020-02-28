@@ -51,8 +51,8 @@ class ShopBasket {
       };
       this.shopBasket.push(newProduct);
     } else {
-    throw new Error('Wrond "ID"');
-  }
+      throw new Error('Wrond "ID"');
+    }
   }
 }
 
