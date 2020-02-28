@@ -57,15 +57,6 @@ class ShopBasket {
     } 
       throw new Error('Wrond "ID');
   }
-
-  delete(id) {
-    let uninstallItems = this.shopBasket.filter(element => element.id !== id);
-    console.log(uninstallItems);
-  }
-
-  update() {
-
-  }
 }
 
 const ShopBasketInstance = new ShopBasket({
