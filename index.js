@@ -43,18 +43,16 @@ class ShopBasket {
         itemInBasket.quality = oneQuality + 1;
         itemInBasket.total = element.price * itemInBasket.quality;
       })
-      return recalculationValue;
-    }
-    if (element) {
+    } else if (element) {
       const newProduct = {
         id: id,
         quality: 1,
         total: element.price,
       };
       this.shopBasket.push(newProduct);
-      return;
-    }
+    } else {
     throw new Error('Wrond "ID"');
+  }
   }
 }
 
