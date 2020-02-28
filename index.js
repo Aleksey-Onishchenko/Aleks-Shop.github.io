@@ -25,7 +25,7 @@ const shopProducts = [
   }
 ]
 
-
+ё1
 class ShopBasket {
   constructor(config) {
     this.shopProducts = config.shopProducts;
@@ -35,23 +35,24 @@ class ShopBasket {
   create(id) {
     const element = this.shopProducts.find(elem => elem.id === id);
     
-    if ( element !== undefined) {
+    for (let i = 0; i < this.shopBasket.length; i += 1) {
+      const itemInBasket = this.shopBasket.find(item => item.id === id); // объект в корзине
+
+      if (itemInBasket === this.shopBasket[i]) {
+        console.log('we have 1 like this');
+        itemInBasket.quality += 1;
+        itemInBasket.total = itemInBasket.total * itemInBasket.quality;
+      } 
+    } if (element !== undefined) {
       const newProduct = {
         id: id,
         quality: 1,
         total: element.price,
       };
-
       this.shopBasket.push(newProduct);
-      const itemInBasket = this.shopBasket.find(item => item.id === id);
-      
-      if (this.shopBasket.hasOwnProperty(itemInBasket)) {
-        newProduct.quality += 1;
-      }
-      }
     }
   }
-  
+}
 
 
 const ShopBasketInstance = new ShopBasket({
