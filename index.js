@@ -34,16 +34,16 @@ class ShopBasket {
 
   create(id) {
   
-    let element = this.shopProducts.find(elem => elem.id === id);
-    let itemInBasket = this.shopBasket.find(item => item.id === id);
+    const element = this.shopProducts.find(elem => elem.id === id);
+    const itemInBasket = this.shopBasket.find(item => item.id === id);
   
     if (itemInBasket) {
-      let oneQuality = itemInBasket.quality;
-      this.shopBasket.map(function() {
+      const oneQuality = itemInBasket.quality;
+      const recalculationValue = this.shopBasket.map(function() {
         itemInBasket.quality = oneQuality + 1;
         itemInBasket.total = element.price * itemInBasket.quality;
       })
-      return;
+      return recalculationValue;
     }
     if (element) {
       const newProduct = {
@@ -53,11 +53,9 @@ class ShopBasket {
       };
       this.shopBasket.push(newProduct);
       return;
-      }
-  
+    }
     throw new Error('Wrond "ID"');
   }
-
 }
 
 const ShopBasketInstance = new ShopBasket({
