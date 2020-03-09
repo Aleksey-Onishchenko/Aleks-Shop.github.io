@@ -50,14 +50,13 @@ class ShopBasket {
   }
 
   delete(id) {
+    const itemInBasket = this.shopBasket.find(item => item.id === id);
 
-    // const itemInBasket = this.shopBasket.find(item => item.id === id);
-
-    // if (id !== itemInBasket.id) {
-    //   throw new Error('Wrong "ID"');
-    // } 
+    if (itemInBasket) {
       this.shopBasket = this.shopBasket.filter(elem => elem.id !== id);
-      
+    } else {
+        throw new Error('Wrong ID');
+    }
   }
 
 }
