@@ -53,9 +53,10 @@ class ShopBasket {
     const itemInBasket = this.shopBasket.find(item => item.id === id);
 
     if (itemInBasket) {
-      this.shopBasket = this.shopBasket.filter(elem => elem.id !== id);
+      const abc = this.shopBasket.findIndex(item => item.id === id);
+      this.shopBasket.splice(abc, 1);
     } else {
-        throw new Error('Wrong ID');
+      throw new Error('Wrong ID');
     }
   }
 
