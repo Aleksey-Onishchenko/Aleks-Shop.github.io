@@ -47,33 +47,6 @@ class ShopBasket {
 
   create(id) {
   
-    // const itemInBasket = this.shopBasket.find(item => item.id === id);
-  
-    // if (itemInBasket) {
-    //   const itemsQuality = itemInBasket.quality;
-    //   console.log('basketQuality', itemInBasket.quality);
-    //   console.log('itemsQuality:', itemsQuality);
-    //   console.log('total', itemInBasket.total);
-    //   this.shopBasket = this.shopBasket.map(function() {
-    //     itemInBasket.quality = itemInBasket.quality + 1;
-    //     itemInBasket.total = (itemInBasket.total / itemsQuality) * itemInBasket.quality;
-    //     return itemInBasket;
-    //   })
-    //   return;
-    // } 
-    
-    // const element = this.shopProducts.find(elem => elem.id === id);
-
-    // if (element) {
-    //   const newProduct = {
-    //     id: id,
-    //     quality: 1,
-    //     total: element.price,
-    //   };
-    //   this.shopBasket.push(newProduct);
-    //   return;
-    // } 
-    //   throw new Error('Wrong "ID');
   }
 
   delete(id) {
