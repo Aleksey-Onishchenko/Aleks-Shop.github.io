@@ -42,6 +42,18 @@ class ShopBasket {
         price: 120,
         image: 'url.......'
       },
+      {
+        id: 'nike_jordan',
+        name: 'Nike Air Jordan 1',
+        price: 200,
+        image: 'url.......'
+      },
+      {
+        id: 'nike_force',
+        name: 'Nike Air Force 1',
+        price: 100,
+        image: 'url.......'
+      }
     ];
   }
 
@@ -50,14 +62,12 @@ class ShopBasket {
   }
 
   delete(id) {
-    const itemInBasket = this.shopBasket.find(item => item.id === id);
-
-    if (itemInBasket) {
-      const abc = this.shopBasket.findIndex(item => item.id === id);
-      this.shopBasket.splice(abc, 1);
-    } else {
+    const itemIndex = this.shopBasket.findIndex(item => item.id === id);
+    if (itemIndex === -1) {
       throw new Error('Wrong ID');
-    }
+    } 
+    this.shopBasket.splice(itemIndex, 1);
+    
   }
 
 }
